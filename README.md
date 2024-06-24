@@ -1,6 +1,6 @@
-# NotifyPanel
+# Knowtify
 
-NotifyPanel is a web app tailored for college environments, enabling college staff, seniors, and batch-mates to post notifications and posts for various activities. The platform includes a low latency chat facility, upvoting system for posts, and a discussion section under each user post.
+Knowtify is a web app tailored for college environments, enabling college staff, seniors, and batch-mates to post notifications and posts for various activities. The platform includes a low latency chat facility, upvoting system for posts, and a discussion section under each user post.
 
 ## Features
 - **Notification/Posts**: College staff, seniors, and batch-mates can post notifications or posts for various activities.
@@ -26,7 +26,7 @@ NotifyPanel is a web app tailored for college environments, enabling college sta
 1. **Clone the repository:**
     ```sh
     git clone https://github.com/yash037/Knowtify.git
-    cd NotifyPanel
+    cd knowtify
     ```
 
 2. **Install dependencies for both frontend and backend:**
@@ -65,7 +65,7 @@ NotifyPanel is a web app tailored for college environments, enabling college sta
 
 
 ## Usage
-After completing the setup, you can start using NotifyPanel. College staff, seniors, and batch-mates can post notifications and interact with each other through the chat facility. Users can upvote posts to increase their visibility and engage in discussions under each post.
+After completing the setup, you can start using Knowtify. College staff, seniors, and batch-mates can post notifications and interact with each other through the chat facility. Users can upvote posts to increase their visibility and engage in discussions under each post.
 
 <!--
 ## Contributing
