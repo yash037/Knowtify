@@ -1,4 +1,4 @@
-import { Button, Flex, Image, Link, useColorMode } from "@chakra-ui/react";
+import { Button, Flex, Image, Link, useColorMode, Text } from "@chakra-ui/react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
 import { AiFillHome } from "react-icons/ai";
@@ -17,25 +17,23 @@ const Header = () => {
 	const setAuthScreen = useSetRecoilState(authScreenAtom);
 
 	return (
-		<Flex justifyContent={"space-between"} mt={6} mb='12'>
+		<Flex justifyContent={user ? "space-between" : "center"} mt={6} mb='12'>
 			{user && (
 				<Link as={RouterLink} to='/'>
 					<AiFillHome size={24} />
 				</Link>
 			)}
-			{!user && (
-				<Link as={RouterLink} to={"/auth"} onClick={() => setAuthScreen("login")}>
-					Login
-				</Link>
-			)}
 
-			<Image
-				cursor={"pointer"}
-				alt='logo'
-				w={6}
-				src={colorMode === "dark" ? "/light-logo.svg" : "/dark-logo.svg"}
-				onClick={toggleColorMode}
-			/>
+			<Flex alignItems="center">
+				<Text fontSize='lg' color={colorMode === "dark" ? "purple.400" : "purple.600"} as='b'>Knowtify</Text>
+				<Image
+					cursor={"pointer"}
+					alt='logo'
+					w={6}
+					src={colorMode === "dark" ? "/light-logo.svg" : "/dark-logo.svg"}
+					onClick={toggleColorMode}
+				/>
+			</Flex>
 
 			{user && (
 				<Flex alignItems={"center"} gap={4}>
@@ -52,12 +50,6 @@ const Header = () => {
 						<FiLogOut size={20} />
 					</Button>
 				</Flex>
-			)}
-
-			{!user && (
-				<Link as={RouterLink} to={"/auth"} onClick={() => setAuthScreen("signup")}>
-					Sign up
-				</Link>
 			)}
 		</Flex>
 	);
