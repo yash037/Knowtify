@@ -21,7 +21,7 @@ const HomePage = () => {
 					showToast("Error", data.error, "error");
 					return;
 				}
-				//console.log(data);
+				// console.log(data);
 				setPosts(data);
 			} catch (error) {
 				showToast("Error", error.message, "error");
@@ -34,9 +34,9 @@ const HomePage = () => {
 
 	return (
 		<Flex gap='10' alignItems={"flex-start"}>
-			<SuggestedUsers />
+			
 			<Box flex={70}>
-				{!loading && posts.length === 0 && <h1>Follow some Profiles to see the Knowtifications!</h1>}
+				{!loading && posts.length === 0 && <h1>Follow some users to see the feed</h1>}
 
 				{loading && (
 					<Flex justify='center'>
@@ -55,7 +55,7 @@ const HomePage = () => {
 					md: "block",
 				}}
 			>
-				
+				<SuggestedUsers />
 			</Box>
 		</Flex>
 	);

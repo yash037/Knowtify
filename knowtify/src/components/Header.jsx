@@ -25,7 +25,9 @@ const Header = () => {
 			)}
 
 			<Flex alignItems="center">
-				<Text fontSize='lg' color={colorMode === "dark" ? "purple.400" : "purple.600"} as='b'>Knowtify</Text>
+				<Link as={RouterLink} to='/'>
+					<Text fontSize='lg' color={colorMode === "dark" ? "purple.400" : "purple.600"} as='b'>Knowtify</Text>
+				</Link>
 				<Image
 					cursor={"pointer"}
 					alt='logo'
