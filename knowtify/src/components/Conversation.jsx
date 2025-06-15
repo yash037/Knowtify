@@ -20,18 +20,23 @@ const Conversation = ({ conversation, isOnline }) => {
 	const currentUser = useRecoilValue(userAtom);
 	const lastMessage = conversation.lastMessage;
 	const [selectedConversation, setSelectedConversation] = useRecoilState(selectedConversationAtom);
-	const colorMode = useColorMode();
 
-	//console.log("selectedConverstion", selectedConversation);
+	const hoverBg = useColorModeValue("gray.200", "gray.700");
+	const selectedBg = useColorModeValue("gray.300", "gray.600");
+	const borderColor = useColorModeValue("gray.300", "gray.600");
+
 	return (
 		<Flex
 			gap={4}
 			alignItems={"center"}
-			p={"1"}
+			p={"1.5"}
+			borderRadius={"md"}
+			border={"1px solid"}
+			borderColor={selectedConversation?._id === conversation._id ? "blue.400" : borderColor}
+			bg={selectedConversation?._id === conversation._id ? selectedBg : ""}
 			_hover={{
 				cursor: "pointer",
-				bg: useColorModeValue("gray.600", "gray.dark"),
-				color: "white",
+				bg: hoverBg,
 			}}
 			onClick={() =>
 				setSelectedConversation({
@@ -42,10 +47,6 @@ const Conversation = ({ conversation, isOnline }) => {
 					mock: conversation.mock,
 				})
 			}
-			bg={
-				selectedConversation?._id === conversation._id ? (colorMode === "light" ? "gray.400" : "gray.dark") : ""
-			}
-			borderRadius={"md"}
 		>
 			<WrapItem>
 				<Avatar
@@ -56,7 +57,7 @@ const Conversation = ({ conversation, isOnline }) => {
 					}}
 					src={user.profilePic}
 				>
-					{isOnline ? <AvatarBadge boxSize='1em' bg='green.500' /> : ""}
+					{isOnline ? <AvatarBadge boxSize='1em' bg='green.500' /> : null}
 				</Avatar>
 			</WrapItem>
 
@@ -65,14 +66,12 @@ const Conversation = ({ conversation, isOnline }) => {
 					{user.username} <Image src='/verified.png' w={4} h={4} ml={1} />
 				</Text>
 				<Text fontSize={"xs"} display={"flex"} alignItems={"center"} gap={1}>
-					{currentUser._id === lastMessage.sender ? (
-						<Box color={lastMessage.seen ? "blue.400" : ""}>
+					{currentUser._id === lastMessage.sender && (
+						<Box color={lastMessage.seen ? "blue.400" : "gray.500"}>
 							<BsCheck2All size={16} />
 						</Box>
-					) : (
-						""
 					)}
-					{lastMessage.text.length > 18
+					{lastMessage.text?.length > 18
 						? lastMessage.text.substring(0, 18) + "..."
 						: lastMessage.text || <BsFillImageFill size={16} />}
 				</Text>

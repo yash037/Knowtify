@@ -107,10 +107,13 @@ const MessageContainer = () => {
 	return (
 		<Flex
 			flex='70'
-			bg={useColorModeValue("gray.200", "gray.dark")}
+			bg={useColorModeValue("gray.100", "gray.dark")}
 			borderRadius={"md"}
 			p={2}
 			flexDirection={"column"}
+			border='1px solid'
+			borderColor={useColorModeValue("gray.300", "gray.700")}
+			boxShadow={useColorModeValue("sm", "none")}
 		>
 			{/* Message header */}
 			<Flex w={"full"} h={12} alignItems={"center"} gap={2}>
