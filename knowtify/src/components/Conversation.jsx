@@ -62,19 +62,23 @@ const Conversation = ({ conversation, isOnline }) => {
 			</WrapItem>
 
 			<Stack direction={"column"} fontSize={"sm"}>
-				<Text fontWeight='700' display={"flex"} alignItems={"center"}>
-					{user.username} <Image src='/verified.png' w={4} h={4} ml={1} />
-				</Text>
-				<Text fontSize={"xs"} display={"flex"} alignItems={"center"} gap={1}>
+				<Flex fontWeight='700' alignItems={"center"}>
+					<Text>{user.username}</Text>
+					<Image src='/verified.png' w={4} h={4} ml={1} />
+				</Flex>
+				<Flex fontSize={"xs"} alignItems={"center"} gap={1}>
 					{currentUser._id === lastMessage.sender && (
 						<Box color={lastMessage.seen ? "blue.400" : "gray.500"}>
 							<BsCheck2All size={16} />
 						</Box>
 					)}
-					{lastMessage.text?.length > 18
-						? lastMessage.text.substring(0, 18) + "..."
-						: lastMessage.text || <BsFillImageFill size={16} />}
-				</Text>
+					<Text>
+						{lastMessage.text?.length > 18
+							? lastMessage.text.substring(0, 18) + "..."
+							: lastMessage.text || <BsFillImageFill size={16} />}
+					</Text>
+				</Flex>
+
 			</Stack>
 		</Flex>
 	);
